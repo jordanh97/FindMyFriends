@@ -7,3 +7,5 @@ Theme parks, Festivals, Concerts… While these places and events are usually in
 The application uses Google Location Services, The Internet and a Device’s Internal Gyroscope to accurately locate and display all your friends in one easy place. The application displays all your friends on a map in real time as well as with the help of the gyroscope, displaying the direction and distance of each friend. Friends will be able to opt in and out of sharing their location at any time as well as choosing who to share it with.
 The application has the potential to change events forever, making them much more enjoyable to experience as friends and family are always easy to find.
 
+Class Diagram:
+![FMF Class Diagram with UML Notation](https://user-images.githubusercontent.com/47331061/56280794-42841e00-610b-11e9-853c-96303d8a848d.png)
