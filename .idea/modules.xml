@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FindMyFriends.iml" filepath="$PROJECT_DIR$/.idea/FindMyFriends.iml" />
       <module fileurl="file://$PROJECT_DIR$/findmyfriends/alpha.iml" filepath="$PROJECT_DIR$/findmyfriends/alpha.iml" />
-      <module fileurl="file://$PROJECT_DIR$/findmyfriends.iml" filepath="$PROJECT_DIR$/findmyfriends.iml" />
     </modules>
   </component>
 </project>
