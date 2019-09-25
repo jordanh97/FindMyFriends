@@ -27,27 +27,27 @@ public class EventHardwareRepositoryImpl implements EventHardwareRepository {
     }
 
     @Override
-    public EventHardware create(EventHardware administrator) {
+    public EventHardware create(EventHardware eventHardwareInst) {
 
-        eventHardwares.add(administrator);
-        return administrator;
+        eventHardwares.add(eventHardwareInst);
+        return eventHardwareInst;
     }
 
     @Override
     public EventHardware read(String id) {
 
-        return eventHardwares.stream().filter(administrator -> administrator.getEvent().equals(id)).findAny().orElse(null);
+        return eventHardwares.stream().filter(eventHardwareInst -> eventHardwareInst.getEvent().equals(id)).findAny().orElse(null);
     }
 
     @Override
-    public EventHardware update(EventHardware administrator) {
+    public EventHardware update(EventHardware eventHardwareInst) {
 
-        EventHardware inDB = read(administrator.getEvent());
+        EventHardware inDB = read(eventHardwareInst.getEvent());
 
         if(inDB != null){
             eventHardwares.remove(inDB);
-            eventHardwares.add(administrator);
-            return administrator;
+            eventHardwares.add(eventHardwareInst);
+            return eventHardwareInst;
         }
 
         return null;

@@ -10,7 +10,7 @@ public class IndexController {
     @GetMapping("/")
     @ResponseBody
     public String homePage(){
-        return "Welcome to Jordan Hunter Capstone Project";
+        return "Jordan Hunter's Project";
     }
 
 }
