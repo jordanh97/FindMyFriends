@@ -1,7 +1,7 @@
 package com.findmyfriends.alpha.controller;
 
 import com.findmyfriends.alpha.domain.Admin;
-import com.findmyfriends.alpha.service.Impl.AdminServiceImpl;
+import com.findmyfriends.alpha.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;

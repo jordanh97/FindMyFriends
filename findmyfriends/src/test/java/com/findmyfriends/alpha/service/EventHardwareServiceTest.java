@@ -2,7 +2,7 @@ package com.findmyfriends.alpha.service;
 
 import com.findmyfriends.alpha.domain.EventHardware;
 import com.findmyfriends.alpha.factory.EventHardwareFactory;
-import com.findmyfriends.alpha.service.Impl.EventHardwareServiceImpl;
+import com.findmyfriends.alpha.service.impl.EventHardwareServiceImpl;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;

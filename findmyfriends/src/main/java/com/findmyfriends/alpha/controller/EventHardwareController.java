@@ -1,7 +1,7 @@
 package com.findmyfriends.alpha.controller;
 
 import com.findmyfriends.alpha.domain.EventHardware;
-import com.findmyfriends.alpha.service.Impl.EventHardwareServiceImpl;
+import com.findmyfriends.alpha.service.impl.EventHardwareServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;

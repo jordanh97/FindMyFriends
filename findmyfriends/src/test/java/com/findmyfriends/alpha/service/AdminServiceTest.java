@@ -2,7 +2,7 @@ package com.findmyfriends.alpha.service;
 
 import com.findmyfriends.alpha.domain.Admin;
 import com.findmyfriends.alpha.factory.AdminFactory;
-import com.findmyfriends.alpha.service.Impl.AdminServiceImpl;
+import com.findmyfriends.alpha.service.impl.AdminServiceImpl;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;

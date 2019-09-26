@@ -1,4 +1,4 @@
-package com.findmyfriends.alpha.service.Impl;
+package com.findmyfriends.alpha.service.impl;
 
 import com.findmyfriends.alpha.domain.User;
 import com.findmyfriends.alpha.service.UserService;
