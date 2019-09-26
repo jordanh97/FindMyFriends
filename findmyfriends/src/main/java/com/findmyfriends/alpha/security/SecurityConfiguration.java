@@ -1,5 +1,6 @@
 package com.findmyfriends.alpha.security;
 
+import com.findmyfriends.alpha.domain.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -35,8 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/user/getall", "/eventhardware/getall")
-                .hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/eventhardware/getall", "/user/getall","/admin/getall")
+                .hasAnyRole(ADMIN_ROLE, USER_ROLE)
                 .and()
                 .csrf().disable();
 
