@@ -1,11 +1,11 @@
 package com.findmyfriends.alpha.repository;
 
 import com.findmyfriends.alpha.domain.EventHardware;
-import com.findmyfriends.alpha.repository.IRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;
 
-public interface EventHardwareRepository extends IRepository<EventHardware, String>{
+public interface EventHardwareRepository extends JpaRepository<EventHardware, String> {
 
     Set<EventHardware> getAll();
 }

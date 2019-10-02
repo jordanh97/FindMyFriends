@@ -1,11 +1,14 @@
 package com.findmyfriends.alpha.repository;
 
 import com.findmyfriends.alpha.domain.Admin;
-import com.findmyfriends.alpha.repository.IRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-public interface AdminRepository extends IRepository<Admin, String>{
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, String> {
 
     Set<Admin> getAll();
+
 }

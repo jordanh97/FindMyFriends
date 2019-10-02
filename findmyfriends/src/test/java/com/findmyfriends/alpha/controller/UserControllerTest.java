@@ -22,7 +22,7 @@ import static junit.framework.TestCase.assertNotNull;
 public class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/eventhardware";
+    private String baseURL = "http://localhost:8080/user";
 
     @Test
     public void a_create() {

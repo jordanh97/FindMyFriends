@@ -1,8 +1,15 @@
 package com.findmyfriends.alpha.domain;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.util.Objects;
 
+@Entity
 public class User {
+
     @Override
     public String toString() {
         return "User{" +
@@ -31,7 +38,11 @@ public class User {
         return Objects.hash(User, deviceID, login, location, stationType);
     }
 
-    private String User,  deviceID,  login,  location,  stationType;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String User;
+
+    private String  deviceID,  login,  location,  stationType;
 
     public User(User.Builder builder) {
         this.User = builder.User;
@@ -87,6 +98,10 @@ public class User {
 
     public static class Builder{
         private String User,  deviceID,  login,  location,  stationType;
+
+        public Builder() {
+
+        }
 
         public User.Builder User(String User){
             this.User = User;
