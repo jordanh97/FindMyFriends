@@ -58,8 +58,8 @@ public class AdminServiceTest {
 
     }
 
-    @Test
-    public void d_delete() {
+@Test
+ public void d_delete() {
         assertNotNull(adminService.getAll());
         adminService.delete(admin.getAdmin());
         Admin notInSet = adminService.read(admin.getAdmin());

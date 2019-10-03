@@ -1,70 +1,59 @@
 package com.findmyfriends.alpha.service.impl;
 
 import com.findmyfriends.alpha.domain.Admin;
+import com.findmyfriends.alpha.repository.hibernate.AdminRepositoryHibernate;
 import com.findmyfriends.alpha.service.AdminService;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Repository("AdminServiceImpl")
+@Service("AdminServiceImpl")
 public class AdminServiceImpl implements AdminService {
 
-    private static  AdminServiceImpl repository = null;
-    private Set<Admin> Admins;
+    private AdminServiceImpl service = null;
+    @Autowired
+    private AdminRepositoryHibernate repository;
 
     public AdminServiceImpl(){
-        Admins = new HashSet<>();
+
     }
 
-
-    public static AdminServiceImpl getRepository() {
-
-        if(repository == null){
-            return new AdminServiceImpl();
+    public AdminServiceImpl getService(){
+        if (service == null){
+            service = new AdminServiceImpl();
         }
-        return repository;
-    }
-
-    @Override
-    public Admin create(Admin adminInstance) {
-
-        Admins.add(adminInstance);
-        return adminInstance;
-    }
-
-    @Override
-    public Admin read(String id) {
-
-        return Admins.stream().filter(adminInstance -> adminInstance.getAdmin().equals(id)).findAny().orElse(null);
-    }
-
-    @Override
-    public Admin update(Admin adminInstance) {
-
-        Admin inDB = read(adminInstance.getAdmin());
-
-        if(inDB != null){
-            Admins.remove(inDB);
-            Admins.add(adminInstance);
-            return adminInstance;
-        }
-
-        return null;
-    }
-
-    @Override
-    public void delete(String id) {
-
-        Admin inDB = read(id);
-        Admins.remove(inDB);
-
+        return service;
     }
 
     @Override
     public Set<Admin> getAll() {
-        return Admins;
+
+        List<Admin> list = (List<Admin>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
-}
+    @Override
+    public Admin create(Admin appointment) {
+        return this.repository.save(appointment);
+    }
 
+    @Override
+    public Admin read(String integer) {
+        return this.repository.findById(integer).orElse(null);
+    }
+
+    @Override
+    public Admin update(Admin appointment) {
+        return this.repository.save(appointment);
+    }
+
+    @Override
+    public void delete(String integer) {
+
+        repository.deleteById(integer);
+    }
+}

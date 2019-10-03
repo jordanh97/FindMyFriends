@@ -1,52 +1,55 @@
 package com.findmyfriends.alpha.controller;
 
 import com.findmyfriends.alpha.domain.Admin;
+
+import com.findmyfriends.alpha.repository.impl.AdminRepositoryImpl;
+import com.findmyfriends.alpha.service.AdminService;
 import com.findmyfriends.alpha.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
-    @Qualifier("AdminServiceImpl")
-    private AdminServiceImpl service;
+    private AdminServiceImpl adminService;
 
     @PostMapping("/new")
-    public Admin create(@RequestBody Admin Admin){
+    public Admin create(@RequestBody Admin t) {
 
-        return service.create(Admin);
+        return adminService.create(t);
     }
 
     @GetMapping(path = "/find/{id}")
     public Admin findById(@PathVariable String id){
 
-        Admin Admin = service.read(id);
-
-        return Admin;
+        Admin admin = adminService.read(id);
+        return admin;
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody Admin Admin){
+    public void update(@RequestBody Admin admin){
 
-        service.update(Admin);
+        adminService.update(admin);
 
     }
 
     @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id){
-        service.delete(id);
+        adminService.delete(id);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public Set<Admin> getAll(){
-        return service.getAll();
+        return adminService.getAll();
     }
+
 
 }
 

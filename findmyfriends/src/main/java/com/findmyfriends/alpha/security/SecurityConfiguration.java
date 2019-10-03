@@ -1,6 +1,5 @@
 package com.findmyfriends.alpha.security;
 
-import com.findmyfriends.alpha.domain.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,8 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private static final String USER_ROLE = "USER";
     private static final String ADMIN_ROLE = "ADMIN";
+    private static final String USER_ROLE = "USER";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -36,8 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/eventhardware/getall", "/user/getall","/admin/getall")
-                .hasAnyRole(ADMIN_ROLE, USER_ROLE)
+                //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/admin/getall").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.POST, "/admin/new").hasRole(ADMIN_ROLE)
                 .and()
                 .csrf().disable();
 

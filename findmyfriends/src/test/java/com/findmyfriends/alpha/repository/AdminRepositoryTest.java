@@ -4,66 +4,79 @@ import com.findmyfriends.alpha.domain.Admin;
 import com.findmyfriends.alpha.factory.AdminFactory;
 import com.findmyfriends.alpha.repository.impl.AdminRepositoryImpl;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AdminRepositoryTest {
+
+
     @Autowired
     private AdminRepositoryImpl adminRepository;
-    Admin admin = AdminFactory.getAdmin("1234", "12321", "cell", "34.2", "station");
 
     @Test
     public void a_create() {
 
+        Admin admin = AdminFactory.getAdmin("1234", "12321", "cell", "34.2", "station");
         adminRepository.create(admin);
+
         assertNotNull(adminRepository.getAll());
-        System.out.println(adminRepository.getAll());
 
     }
 
     @Test
     public void b_read() {
 
-        Admin fromSet = adminRepository.read(admin.getAdmin());
-        assertNotNull(fromSet);
-        System.out.println(adminRepository.getAll());
+        Admin admin = AdminFactory.getAdmin("1234", "12321", "cell", "34.2", "station");
+        adminRepository.create(admin);
+
+        assertNotNull(adminRepository.getAll());
+
+        Admin from = adminRepository.read(admin.getAdmin());
+
+        assertEquals(admin, from);
+
     }
 
     @Test
     public void c_update() {
 
+        Admin admin = AdminFactory.getAdmin("1234", "12321", "cell", "34.2", "station");
+        adminRepository.create(admin);
 
-        Admin updatedAdmin  = AdminFactory.getAdmin("1234", "wowza", "XBone", "34.2", "station");
-        adminRepository.update(updatedAdmin);
-        Assert.assertNotEquals(admin.getDeviceID(), updatedAdmin.getDeviceID());
-        System.out.println(adminRepository.getAll());
+        assertNotNull(adminRepository.getAll());
 
+        Admin admins = AdminFactory.getAdmin( "1234", "12321", "cell", "34.2", "station");
+        admins.setAdmin(admin.getAdmin());
+        adminRepository.update(admins);
 
+        Admin updated = adminRepository.read(admins.getAdmin());
+
+        assertEquals(admins, updated);
 
     }
 
     @Test
     public void d_delete() {
 
-        assertNotNull(adminRepository.getAll());
+        Admin admin = AdminFactory.getAdmin( "1234", "12321", "cell", "34.2", "station");
+
         adminRepository.delete(admin.getAdmin());
-        Admin adminTor = adminRepository.read(admin.getAdmin());
-        assertNull(adminTor);
-        System.out.println(adminRepository.getAll());
+
+        Admin no = adminRepository.read(admin.getAdmin());
+
+        assertNull(no);
 
     }
-
 }
-
