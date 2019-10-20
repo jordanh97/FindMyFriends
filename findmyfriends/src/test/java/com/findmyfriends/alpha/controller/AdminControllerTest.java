@@ -27,8 +27,8 @@ public class AdminControllerTest {
     @Test
     public void a_create() {
 
-        Admin admin = AdminFactory.getAdmin("1234", "12321", "cell", "34.2", "station");
-        admin.setAdmin("12132465");
+        Admin admin = AdminFactory.getAdmin("1234", "12321112sdsfaas", "cell", "344444.2", "station");
+        admin.setAdmin("121132465");
         ResponseEntity<Admin> postResponse = restTemplate.postForEntity(baseURL + "/new/", admin, Admin.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     @ResponseBody
     public String homePage(){
         return "Jordan Hunter's Project";
